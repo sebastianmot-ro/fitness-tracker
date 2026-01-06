@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Fitness Tracker</h1>
+
+    <section>
+        <h2>Add Activity</h2>
+        <form id="activityForm">
+            <label for="type">Type:</label>
+            <select id="type" required>
+                <option value="RUN">Run</option>
+                <option value="BIKE">Bike</option>
+                <option value="SWIM">Swim</option>
+            </select>
+
+            <label for="startTime">Start Time:</label>
+            <input type="datetime-local" id="startTime" required>
+
+            <label for="durationSeconds">Duration (seconds):</label>
+            <input type="number" id="durationSeconds" required>
+
+            <label for="distanceMeters">Distance (meters):</label>
+            <input type="number" id="distanceMeters" required>
+
+            <label for="calories">Calories:</label>
+            <input type="number" id="calories" required>
+
+            <label for="notes">Notes:</label>
+            <input type="text" id="notes">
+
+            <button type="submit">Add Activity</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Activities</h2>
+        <ul id="activitiesList"></ul>
+    </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
