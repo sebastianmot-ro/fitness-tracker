@@ -7,42 +7,81 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Fitness Tracker</h1>
+<div class="app">
+    <header class="app-header">
+        <h1>Fitness Tracker</h1>
+        <p class="sub">Log activities, track progress, feel great.</p>
+    </header>
 
-    <section>
-        <h2>Add Activity</h2>
-        <form id="activityForm">
-            <label for="type">Type:</label>
-            <select id="type" required>
-                <option value="RUN">Run</option>
-                <option value="BIKE">Bike</option>
-                <option value="SWIM">Swim</option>
-            </select>
+    <main class="main-grid">
+        <aside class="panel panel-form">
+            <h2>Add Activity</h2>
+            <form id="activityForm" novalidate>
+                <div class="form-row">
+                    <label for="type">Type</label>
+                    <select id="type" required>
+                        <option value="RUN">Run</option>
+                        <option value="BIKE">Bike</option>
+                        <option value="SWIM">Swim</option>
+                    </select>
+                </div>
 
-            <label for="startTime">Start Time:</label>
-            <input type="datetime-local" id="startTime" required>
+                <div class="form-row">
+                    <label for="startTime">Start Time</label>
+                    <input type="datetime-local" id="startTime" required>
+                </div>
 
-            <label for="durationSeconds">Duration (seconds):</label>
-            <input type="number" id="durationSeconds" required>
+                <div class="form-row twoup">
+                    <div>
+                        <label for="durationSeconds">Duration (seconds)</label>
+                        <input type="number" id="durationSeconds" min="0" required>
+                    </div>
+                    <div>
+                        <label for="distanceMeters">Distance (meters)</label>
+                        <input type="number" id="distanceMeters" min="0" required>
+                    </div>
+                </div>
 
-            <label for="distanceMeters">Distance (meters):</label>
-            <input type="number" id="distanceMeters" required>
+                <div class="form-row twoup">
+                    <div>
+                        <label for="calories">Calories</label>
+                        <input type="number" id="calories" min="0" required>
+                    </div>
+                    <div>
+                        <label for="notes">Notes</label>
+                        <input type="text" id="notes" placeholder="Optional notes...">
+                    </div>
+                </div>
 
-            <label for="calories">Calories:</label>
-            <input type="number" id="calories" required>
+                <div class="form-row">
+                    <button type="submit" class="btn-primary">Add Activity</button>
+                </div>
+            </form>
+        </aside>
 
-            <label for="notes">Notes:</label>
-            <input type="text" id="notes">
+        <section class="panel panel-list">
+            <div class="list-header">
+                <h2>Activities</h2>
+                <div class="controls">
+                    <label for="filterType">Filter:</label>
+                    <select id="filterType">
+                        <option value="ALL">All</option>
+                        <option value="RUN">Run</option>
+                        <option value="BIKE">Bike</option>
+                        <option value="SWIM">Swim</option>
+                    </select>
+                </div>
+            </div>
 
-            <button type="submit">Add Activity</button>
-        </form>
-    </section>
+            <div id="activitiesContainer" class="activities-container">
+                <div id="loading" class="loading">Loading activities…</div>
+                <ul id="activitiesList" class="activities-list"></ul>
+                <div id="emptyState" class="empty">No activities yet. Add your first activity!</div>
+            </div>
+        </section>
+    </main>
 
-    <section>
-        <h2>Activities</h2>
-        <ul id="activitiesList"></ul>
-    </section>
+    <div id="toast" class="toast" aria-live="polite"></div>
 </div>
 
 <script src="app.js"></script>
